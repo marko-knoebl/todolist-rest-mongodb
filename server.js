@@ -58,11 +58,16 @@ const main = async () => {
 
   // create one
   app.post("/todos", async (req, res) => {
-    const newTodo = await todos.insertOne({
+    const result = await todos.insertOne({
       title: req.body.title,
       completed: false,
     });
-    res.json(newTodo);
+    const newTodo = result.ops[0];
+    res.json({
+      id: newTodo.id,
+      completed: newTodo.completed,
+      title: newTodo.title,
+    });
   });
 
   // update one
