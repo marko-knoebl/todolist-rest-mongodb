@@ -64,7 +64,7 @@ const main = async () => {
     });
     const newTodo = result.ops[0];
     res.json({
-      id: newTodo.id,
+      id: newTodo._id,
       completed: newTodo.completed,
       title: newTodo.title,
     });
